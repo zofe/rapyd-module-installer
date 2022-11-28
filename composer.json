@@ -1,0 +1,22 @@
+{
+  "name": "zofe/rapyd-module-installer",
+  "type": "composer-plugin",
+  "description": "Rapyd Module Installer, to move remote rapyd-livewire modules in your application Modules folder",
+  "keywords": ["framework", "laravel"],
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Zofe\\RapydModuleInstaller\\": "src/"
+    }
+  },
+  "extra": {
+    "class": "Zofe\\RapydModuleInstaller\\RapydModuleInstallerPlugin"
+  },
+  "require-dev": {
+    "composer/composer": "^2.0"
+  },
+  "require": {
+    "composer-plugin-api": "^2.0",
+    "php": "7.* || 8.*"
+  }
+}
