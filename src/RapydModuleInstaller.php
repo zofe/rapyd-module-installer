@@ -28,7 +28,7 @@ class RapydModuleInstaller extends LibraryInstaller
     protected function getBaseInstallationPath()
     {
         if (!$this->composer || !$this->composer->getPackage()) {
-            return self::DEFAULT_ROOT;
+            return 'app/'.self::DEFAULT_ROOT;
         }
 
         $extra = $this->composer->getPackage()->getExtra();
