@@ -34,7 +34,7 @@ class RapydModuleInstaller extends LibraryInstaller
         $extra = $this->composer->getPackage()->getExtra();
 
         if (!$extra || empty($extra['module-dir'])) {
-            return self::DEFAULT_ROOT;
+            return 'app/'.self::DEFAULT_ROOT;
         }
 
         return $extra['module-dir'];
