@@ -5,6 +5,8 @@ namespace Zofe\RapydModuleInstaller;
 
 use Composer\Package\PackageInterface;
 use Composer\Installer\LibraryInstaller;
+use Composer\Repository\InstalledRepositoryInterface;
+use React\Promise\PromiseInterface;
 use Zofe\RapydModuleInstaller\Exceptions\RapydModuleInstallerException;
 
 class RapydModuleInstaller extends LibraryInstaller
@@ -77,5 +79,23 @@ class RapydModuleInstaller extends LibraryInstaller
     public function supports($packageType)
     {
         return 'rapyd-module' === $packageType;
+    }
+
+    public function update(InstalledRepositoryInterface $repo, PackageInterface $initial, PackageInterface $target)
+    {
+        $question = sprintf(
+            '<question>Do you want to update package %s from version %s to %s?</question> YOU WILL LOSE ANY CUSTOMIZATION YOU HAVE MADE [y/N] ',
+            $initial->getPrettyName(),
+            $initial->getPrettyVersion(),
+            $target->getPrettyVersion()
+        );
+
+        if (!$this->io->askConfirmation($question)) {
+            return;
+        }
+
+        parent::update($repo, $initial, $target);
+
+
     }
 }
