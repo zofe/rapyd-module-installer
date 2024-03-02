@@ -83,7 +83,8 @@ class RapydModuleInstaller extends LibraryInstaller
 
     public function update(InstalledRepositoryInterface $repo, PackageInterface $initial, PackageInterface $target)
     {
-        $question = sprintf(
+        return;
+        /*$question = sprintf(
             '<question>Do you want to update package %s from version %s to %s?</question> YOU WILL LOSE ANY CUSTOMIZATION YOU HAVE MADE [y/N] ',
             $initial->getPrettyName(),
             $initial->getPrettyVersion(),
@@ -95,7 +96,7 @@ class RapydModuleInstaller extends LibraryInstaller
         }
 
         parent::update($repo, $initial, $target);
-
+        */
 
     }
 }
