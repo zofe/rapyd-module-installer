@@ -1,7 +1,12 @@
 # Rapyd Module Installer
 
-The purpose of this package is to allow for easy installation of standalone Modules (public or private) into a Laravel application that is powered by [Rapyd Livewire](https://github.com/zofe/rapyd-livewire) package. 
+The purpose of this package is to allow for easy installation of standalone Modules (public or private) into a Laravel application that is powered by [Rapyd Livewire](https://github.com/zofe/rapyd-livewire) package.
 This package will ensure that your module is installed into the `Modules/` directory instead of `vendor/` to make each module you need automatically part of your project
+
+The "update" and "remove" logic of modules installed via composer by this installer is deliberately not implemented.
+For example "composer install myvendor@mymodule-module" will download the module and install it in your Module directory.
+
+But "composer remove myvendor@mymodule-module" will not delete the module folder and your changes from your project
 
 
 ## Installation
@@ -12,8 +17,7 @@ This package will ensure that your module is installed into the `Modules/` direc
 4. Require your bespoke module using Composer. You may want to set the constraint to `dev-master` to ensure you always get the latest version.
 
 ## Notes
-* When working on a module that is version controlled within an app that is also version controlled, you have to commit and push from inside the Module directory and then `composer update` within the app itself to ensure that the latest version of your module (dependant upon constraint) is specified in your composer.lock file.
-
+* 
 
 ## Public available modules
 

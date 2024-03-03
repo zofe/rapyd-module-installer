@@ -103,6 +103,17 @@ class RapydModuleInstaller extends LibraryInstaller
     public function uninstall(InstalledRepositoryInterface $repo, PackageInterface $package)
     {
         return;
+        /*$question = sprintf(
+            '<question>Do you want to remove package %s?</question> YOU WILL LOSE ANY CUSTOMIZATION YOU HAVE MADE [y/N] ',
+            $package->getPrettyName()
+        );
+
+        if (!$this->io->askConfirmation($question)) {
+            return;
+        }
+
+        parent::uninstall($repo, $package);
+        */
     }
 }
 
