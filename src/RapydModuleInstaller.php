@@ -99,4 +99,11 @@ class RapydModuleInstaller extends LibraryInstaller
         */
 
     }
+
+    public function uninstall(InstalledRepositoryInterface $repo, PackageInterface $package)
+    {
+        return;
+    }
 }
+
+
