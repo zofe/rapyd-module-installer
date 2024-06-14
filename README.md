@@ -40,7 +40,7 @@ To create your own module for a Laravel application using Rapyd Admin, you can d
     },
     "config": {
         "allow-plugins": {
-            "yourvendor/rapyd-module-installer": true
+            "zofe/rapyd-module-installer": true
         }
     },
     "extra": {
