@@ -1,20 +1,74 @@
-# Rapyd Module Installer
+# Rapyd Modular Management for Laravel
 
-The purpose of this package is to allow for easy installation of standalone Modules (public or private) into a Laravel application that is powered by [Rapyd Livewire](https://github.com/zofe/rapyd-livewire) package.
-This package will ensure that your module is installed into the `Modules/` directory instead of `vendor/` to make each module you need automatically part of your project
+This package provides a streamlined approach to managing modular components within a Laravel application, particularly when used in conjunction with the [Rapyd Admin](https://github.com/zofe/rapyd-admin) package. 
 
-The "update" and "remove" logic of modules installed via composer by this installer is deliberately not implemented.
-For example "composer install myvendor@mymodule-module" will download the module and install it in your Module directory.
+With this tool, you can easily install standalone modules—whether public or private—directly into your Laravel project's `Modules/` directory, rather than the `vendor/` directory. This approach ensures that each module is seamlessly integrated into your project, enhancing maintainability and modularity.
 
-But "composer remove myvendor@mymodule-module" will not delete the module folder and your changes from your project
+## Key Features
+
+- **Modular Installation**: Install modules into the `Modules/` directory to keep them as part of your project's structure.
+- **Simplified Process**: Use composer to add modules effortlessly. For instance, running `composer install myvendor@mymodule-module` will place the module in your `Modules/` directory.
+
+## Important Notes
+
+- The "update" and "remove" logic for modules installed via composer using this installer is deliberately not implemented.
+- Running `composer remove myvendor@mymodule-module` will not delete the module's folder or any of your changes from the project.
+
+This package is designed to facilitate the modular management of your Laravel application, ensuring that each module remains a coherent part of your development environment.
 
 
-## Installation
+## Creating Your Own Module
 
-1. Ensure you have the `type` set to `rapyd-module` in your module's `composer.json`
-2. Ensure your package is named in the convention `<namespace>/<name>-module`, for example `zofe/demo-module` would install into `app/Modules/Demo`
-3. Require this package: `composer require zofe/rapyd-module-installer`
-4. Require your bespoke module using Composer. You may want to set the constraint to `dev-master` to ensure you always get the latest version.
+To create your own module for a Laravel application using Rapyd Admin, you can define a custom composer package. Below is an example of a `composer.json` file for a generic module:
+
+```json
+{
+    "name": "yourvendor/yourmodule",
+    "description": "A custom module for a Laravel application",
+    "license": "mit",
+    "type": "rapyd-module",
+    "authors": [
+        {
+            "name": "Your Name",
+            "email": "your.email@example.com"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "illuminate/config": "^11.0",
+        "illuminate/contracts": "^11.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "yourvendor/rapyd-module-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "App\\Modules\\YourModule\\YourModuleServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
+```
+
+Basic folder structure for the module:
+
+```
+Livewire/
+  ├─ Component.php
+Views/
+  ├─ component_view.blade.php
+├─ routes.php
+├─ config.php
+├─ composer.json
+
+```
+
+
 
 ## Notes
 * 
